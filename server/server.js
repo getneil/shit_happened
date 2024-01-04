@@ -40,7 +40,7 @@ const getRejectionConfidence = async (titles) => {
   const { candidates } = await response.json();
 
   const confidenceLevel = +get(candidates, '[0].content.parts[0].text', '0');
-  return confidenceLevel;
+  return isNaN(confidenceLevel) ? 0 : confidenceLevel;
 }
 
 const getCoindeskTitles = async () => {
